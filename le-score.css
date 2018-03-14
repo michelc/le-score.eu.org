@@ -1,0 +1,228 @@
+/* A simple guide to responsive design. Made by Adam Kaplan.
+   (http://www.adamkaplan.me/grid/)
+   ========================================================================== */
+
+
+/* Layout
+   ========================================================================== */
+
+*, *:before, *:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+html {
+  font-family: "Century Gothic", sans-serif;
+  font-size: 20px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  background-color: #fff;
+  color: #222;
+}
+
+.container {
+  background-color: #fff;
+  margin: 0 auto;
+  max-width: 22rem;
+  overflow: hidden;
+  width: 99.9%;
+}
+
+
+/* Mobile First Grid (use .column)
+   ========================================================================== */
+
+.column {
+  float: left;
+  margin: 0;
+  padding-left: 0;
+  padding-right: 0;
+  width: 14.2857%;
+}
+
+.column.half { width: 50%; }
+.column.six { width: 85.7143%; }
+.column.two { width: 28.5714%; }
+
+
+/* Clearfix by Nicolas Gallagher
+   (http://nicolasgallagher.com/micro-clearfix-hack/)
+   ========================================================================== */
+
+.clearfix:before, .row:before,
+.clearfix:after, .row:after {
+  content: " ";
+  display: table;
+}
+
+.clearfix:after, .row:after { clear: both; }
+
+
+/* Links
+   ========================================================================== */
+
+a {
+  color: #00f;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #00f;
+  text-decoration: underline;
+}
+
+p.action {
+  color: gray !important;
+  cursor: pointer;
+  font-size: .8rem;
+  text-align: center;
+  margin: 0;
+}
+
+
+/* Titles
+   ========================================================================== */
+
+h1 {
+  background-color: #666;
+  color: #fff;
+  font-size: 1.7em;
+  margin-top: 0;
+  /* margin-bottom: 0.67em; -- from normalize.css */
+  text-align: center;
+}
+
+h2 {
+  background-color: #0b0;
+  color: #fff;
+  font-size: 1.17em;
+  font-weight: normal;
+  margin: 0;
+  padding: 5px;
+  text-align: center;
+}
+
+
+/* Page structure
+   ========================================================================== */
+
+.bloc {
+  background-color: #fff;
+  padding: 1px 5px;
+  margin: 0;
+  min-height: 22rem;
+  min-height: calc(100vh - 3.22em - 1.755em - 2.5rem - 20px);
+}
+
+/*
+  https://stackoverflow.com/questions/25792296/how-to-make-div-10-of-device-screen-height-css
+  h1 => 3.22
+   - font-size : 1.7em x 1.5 = 2.55
+   - margin-bottom : 0.67em
+  h2 => 1.755
+   - font-size : 1.17em x 1.5 = 1.755
+  .button => 2.5
+   - height : 2.5rem
+  font-size ? => 20px
+*/
+
+li {
+  padding: 5px 0;
+}
+
+/* https://css-tricks.com/couple-takes-sticky-footer/ */
+button {
+  background-color: #05f;
+  border: 0;
+  color: white;
+  cursor: pointer;
+  height: 2.5rem;
+  padding: 10px 10px;
+  text-align: left;
+  text-transform: lowercase;
+  width: 100%;
+}
+
+button span {
+  background-color: #00f;
+  display: inline-block;
+  height: 2.5rem;
+  margin-top: -10px;
+  margin-left: -10px;
+  padding: 13px;
+  text-align: center;
+  text-transform: none;
+  width: 3rem;
+}
+
+
+/* Players page
+   ========================================================================== */
+
+#joueurs input { width: 95%; }
+
+
+/* Points page
+   ========================================================================== */
+
+#points { display: none; }
+
+li span {
+  display: inline-block;
+  width: 50%;
+}
+
+#points input { width: 35%; }
+
+
+/* Scores page
+   ========================================================================== */
+
+#scores { display: none; }
+
+#scores .bloc {
+  padding: 1px 0;
+}
+
+h3 {
+  background-color: #e4e4e4;
+  color: #333;
+  font-size: .9em;
+  font-weight: normal;
+  margin: 5px 0 0 0;
+  padding: 0;
+  text-align: center;
+}
+
+/* https://www.haykranen.nl/2011/10/08/using-the-first-of-type-pseudoselector-instead-of-first-child/ */
+.bloc h3:first-of-type {
+  margin-top: 15px;
+}
+
+pre {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+
+/* Tablet & Desktop
+   ========================================================================== */
+
+@media (min-width: 28rem) {
+  body { background-color: #f4f4f4; }
+  .bloc { min-height: 24rem; }
+}
+
+
+/* Old smartphones
+   ========================================================================== */
+
+@media (max-width: 22rem) {
+  html { font-size: 16px; }
+  .bloc { min-height: calc(100vh - 3.22em - 1.755em - 2.5rem - 16px); }
+}

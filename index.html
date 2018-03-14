@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1">
+    <title>le-score-rummikub</title>
+    <meta name="description" content="Application pour compter les points au Rummikub">
+    <link rel="stylesheet" href="normalize.css">
+    <link rel="stylesheet" href="le-score.css">
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <h1>le-score-rummikub</h1>
+
+      <div id="joueurs">
+
+        <h2>les-joueurs</h2>
+
+        <div class="bloc">
+
+          <p class="action">effacer tous les noms</p>
+
+          <p>
+            Entrez le prénom des joueurs autour de la table
+            dans l'ordre où vous tournez :
+          </p>
+
+          <ol>
+            <li><input type="text"></li>
+            <li><input type="text"></li>
+            <li><input type="text"></li>
+            <li><input type="text"></li>
+            <li><input type="text"></li>
+            <li><input type="text"></li>
+          </ol>
+
+        </div>
+
+        <button>
+          <span>OK</span>
+          démarrer la partie !
+        </button>
+
+      </div>
+
+      <div id="points">
+
+        <h2>à <strong></strong> de commencer...</h2>
+
+        <div class="bloc">
+
+          <p class="action"></p>
+
+          <p>
+            A la fin de la partie, indiquez le nombre de
+            points restant à faire pour chaque joueur :
+          </p>
+
+          <ol>
+            <li><span></span><input type="number"></li>
+            <li><span></span><input type="number"></li>
+            <li><span></span><input type="number"></li>
+            <li><span></span><input type="number"></li>
+            <li><span></span><input type="number"></li>
+            <li><span></span><input type="number"></li>
+          </ol>
+
+        </div>
+
+        <button>
+          <span>...</span>
+          qui c'est qui gagne ?
+        </button>
+
+      </div>
+
+      <div id="scores">
+
+        <h2><strong></strong> a gagné !</h2>
+
+        <div class="bloc">
+
+          <p class="action">oups ! erreur de saisie</p>
+
+          <h3></h3><pre></pre>
+          <h3></h3><pre></pre>
+          <h3></h3><pre></pre>
+          <h3></h3><pre></pre>
+          <h3></h3><pre></pre>
+          <h3></h3><pre></pre>
+
+        </div>
+
+        <button>
+          <span>OK</span>
+          à <strong></strong> de jouer...
+        </button>
+
+      </div>
+
+    </div>
+
+    <script src="rummikub.js"></script>
+
+  </body>
+
+</html>
