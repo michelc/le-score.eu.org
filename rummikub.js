@@ -1,3 +1,4 @@
+/* globals docCookies */
 /* eslint-env browser */
 
 var Player = (function () {
@@ -218,6 +219,7 @@ var le_score = new Rummikub();
 Start();
 
 function Start() {
+  CookieLoad();
   $("#joueurs input")[0].focus();
   $("#joueurs .action").addEventListener("click", ClearPlayers);
   $("#joueurs button").addEventListener("click", GotoPoints);
@@ -229,6 +231,39 @@ function Start() {
   $("#scores .action").addEventListener("click", UndoScores);
   $("#scores button").addEventListener("click", NextRound);
 }
+
+function CookieLoad()
+{
+  // Récupère le prénom des derniers joueurs
+
+  var rk_players = docCookies.getItem("rk_players");
+  if (rk_players === null) return;
+  var names = rk_players.split("|");
+  var inputs = $("#joueurs input");
+  for (var i = 0; i < inputs.length; i++) {
+    inputs[i].value = names[i] || "";
+  }
+}
+
+function CookieSave()
+{
+  // Sauvegarde la liste des joueurs (pendant 10 jours)
+
+  var names = "";
+  for (var i = 0; i < le_score.count; i++) {
+    names += "|";
+    names += le_score.players[i].name;
+  }
+  docCookies.setItem("rk_players", names.substr(1), 10 * 24 * 60 * 60);
+}
+
+function CookieKill()
+{
+  // Supprime la sauvegarde des joueurs
+
+  docCookies.removeItem("rk_players");
+}
+
 function ClearPlayers() {
   // Vide les zones de saisie des prénoms
 
@@ -237,6 +272,9 @@ function ClearPlayers() {
   for (var i = 0; i < inputs.length; i++) {
     inputs[i].value = "";
   }
+
+  // Supprime la sauvegarde des joueurs
+  CookieKill();
 }
 
 function GotoPoints() {
@@ -255,6 +293,9 @@ function GotoPoints() {
     // alert("Il faut au moins 2 joueurs"); // TODO smartphone ?
     return;
   }
+
+  // Sauvegarde la liste des joueurs (pendant 10 jours)
+  CookieSave();
 
   // Affiche le nom du joueur qui doit commencer
   $("#points h2 strong").textContent = le_score.playing.name;
