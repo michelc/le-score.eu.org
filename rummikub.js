@@ -230,6 +230,13 @@ function Start() {
   $("#points button").addEventListener("click", GotoScores);
   $("#scores .action").addEventListener("click", UndoScores);
   $("#scores button").addEventListener("click", NextRound);
+  window.addEventListener("beforeunload", function (e) {
+    // Message pour confirmation quand on quitte l'application
+    var e = e || window.event;
+    var confirmation = "Voulez-vous quitter l'application ?";
+    e.returnValue = confirmation;
+    return confirmation;
+  });
 }
 
 function CookieLoad()
