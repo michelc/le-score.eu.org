@@ -1,6 +1,7 @@
 {
-    "name": "le-score-rummikub",
-    "short_name": "le-score-rummikub",
+    "background_color": "#ffffff",
+    "description": "Application pour compter les points au Rummikub",
+    "display": "standalone",
     "icons": [
         {
             "src": "icons/android-chrome-192x192.png",
@@ -13,7 +14,10 @@
             "type": "image/png"
         }
     ],
-    "theme_color": "#ffffff",
-    "background_color": "#ffffff",
-    "display": "standalone"
+    "lang": "fr",
+    "name": "le-score-rummikub",
+    "orientation": "portrait",
+    "short_name": "le-score-rummikub",
+    "start_url": "/index.html",
+    "theme_color": "#ffffff"
 }

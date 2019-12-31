@@ -239,8 +239,7 @@ function Start() {
   });
 }
 
-function CookieLoad()
-{
+function CookieLoad() {
   // Récupère le prénom des derniers joueurs
 
   var rk_players = docCookies.getItem("rk_players");
@@ -252,8 +251,7 @@ function CookieLoad()
   }
 }
 
-function CookieSave()
-{
+function CookieSave() {
   // Sauvegarde la liste des joueurs (pendant 10 jours)
 
   var names = "";
@@ -264,8 +262,7 @@ function CookieSave()
   docCookies.setItem("rk_players", names.substr(1), 10 * 24 * 60 * 60);
 }
 
-function CookieKill()
-{
+function CookieKill() {
   // Supprime la sauvegarde des joueurs
 
   docCookies.removeItem("rk_players");
@@ -421,6 +418,7 @@ function ShowPoints() {
   inputs[0].focus();
 }
 
+
 function beep(message) {
   // http://www.rgagnon.com/jsdetails/js-0024.html
   // https://stackoverflow.com/questions/19018859/wait-until-sound-finish-to-use-page
@@ -429,3 +427,18 @@ function beep(message) {
   (new Audio("data:audio/wav;base64," + beep)).play();
   setTimeout(function () { alert(message) }, 50);
 }
+
+
+function registerServiceWorker() {
+  // Enregistre le Service Worker si le navigateur le gère
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("/service-worker.js").then((reg) => {
+      console.log("SW 'le-score-rummikub' ok. Scope = " + reg.scope);
+    }).catch(error => {
+      console.log("SW 'le-score-rummikub' ko. Error = ", error);
+    });
+  }
+}
+
+registerServiceWorker();
+
