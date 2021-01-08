@@ -2,7 +2,7 @@
 /* eslint-env browser */
 
 var Player = (function () {
-  function Player (first_name) {
+  function Player(first_name) {
     // Nom du joueur
     this.name = first_name;
 
@@ -50,7 +50,7 @@ var Player = (function () {
 }());
 
 var Rummikub = (function () {
-  function Rummikub () {
+  function Rummikub() {
     // Liste des joueurs
     this.players = [];
 
@@ -183,7 +183,7 @@ var Rummikub = (function () {
   Rummikub.prototype.sortedPlayers = function () {
     // Renvoie la liste des joueurs triés du 1° au dernier
 
-    var players = this.players.concat().sort(function(a, b) {
+    var players = this.players.concat().sort(function (a, b) {
       var c = b.scores[b.scores.length - 1] - a.scores[a.scores.length - 1];
       if (c === 0) c = b.victories - a.victories;
       if (c === 0) c = b.name < a.name;
@@ -230,13 +230,14 @@ function Start() {
   $("#points button").addEventListener("click", GotoScores);
   $("#scores .action").addEventListener("click", UndoScores);
   $("#scores button").addEventListener("click", NextRound);
-  window.addEventListener("beforeunload", function (e) {
+  //https://stackoverflow.com/questions/44833642/window-onbeforeunload-confirmexit-not-working-on-android-chrome-browser
+  window.onbeforeunload = window.onunload = function (e) {
     // Message pour confirmation quand on quitte l'application
     var e = e || window.event;
     var confirmation = "Voulez-vous quitter l'application ?";
     e.returnValue = confirmation;
     return confirmation;
-  });
+  };
 }
 
 function CookieLoad() {
